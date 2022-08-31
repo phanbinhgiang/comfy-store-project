@@ -5,6 +5,7 @@ import { FaBars } from 'react-icons/fa';
 
 import logo from '../assets/logo.svg';
 import { links } from '../utils/constants';
+import CartButtons from './CartButtons';
 
 const Navbar = () => {
   return (
@@ -28,6 +29,7 @@ const Navbar = () => {
             );
           })}
         </ul>
+        <CartButtons />
       </div>
     </NavContainer>
   );
