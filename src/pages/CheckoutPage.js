@@ -1,9 +1,17 @@
-import React from 'react'
+import React from 'react';
+import styled from 'styled-components';
+import { PageHero } from '../components';
 
 const CheckoutPage = () => {
   return (
-    <div>CheckoutPage</div>
-  )
-}
+    <main>
+      <PageHero title="Checkout" />
+      <Wrapper className="page">
+        <h1>checkout here</h1>
+      </Wrapper>
+    </main>
+  );
+};
 
-export default CheckoutPage
+const Wrapper = styled.div``;
+export default CheckoutPage;
