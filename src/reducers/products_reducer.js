@@ -28,7 +28,7 @@ const products_reducer = (state, action) => {
     return {
       ...state,
       products_loading: false,
-      products: featured_products,
+      products: action.payload,
       featured_products,
     };
   }
