@@ -62,6 +62,11 @@ export const FilterProvider = ({ children }) => {
   const updateFilters = (e) => {
     let name = e.target.name;
     let value = e.target.value;
+    if (name === 'text') {
+      if (value.startsWith(' ')) {
+        value = '';
+      }
+    }
     if (name === 'category') {
       value = e.target.textContent;
     }
