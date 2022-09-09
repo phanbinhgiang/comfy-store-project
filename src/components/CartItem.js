@@ -63,8 +63,8 @@ const Wrapper = styled.article`
     gap: 1rem;
   }
   img {
-    width: 100%;
-    height: 100%;
+    width: 80px;
+    height: 60px;
     display: block;
     border-radius: var(--radius);
     object-fit: cover;
@@ -152,7 +152,8 @@ const Wrapper = styled.article`
     align-items: center;
     grid-template-rows: 75px;
     img {
-      height: 100%;
+      width: 100px;
+      height: 75px;
     }
     .title {
       height: 100%;
