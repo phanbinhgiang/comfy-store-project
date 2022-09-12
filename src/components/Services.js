@@ -12,11 +12,7 @@ const Services = () => {
             <br />
             Built Only For You
           </h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
-            dolorum debitis consectetur reprehenderit non aliquam voluptates
-            dolore aut vero consequuntur.
-          </p>
+          <p>Comfy Sloth is a great choice for you</p>
         </article>
         <div className="services-center">
           {services.map((service) => {

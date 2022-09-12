@@ -6,11 +6,7 @@ const Contact = () => {
     <Wrapper>
       <div className="section-center">
         <h3>Join our newsletter and get 20% off</h3>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat sint
-          unde quaerat ratione soluta veniam provident adipisci cumque eveniet
-          tempore?
-        </p>
+        <p>Sign up to receive the discount</p>
         <form
           className="contact-form"
           action="https://formspree.io/f/xknegdvw"

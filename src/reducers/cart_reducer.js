@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {
   ADD_TO_CART,
   REMOVE_CART_ITEM,

@@ -15,10 +15,11 @@ const Hero = () => {
           Comfort Zone
         </h1>
         <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto, at
-          sed omnis corporis doloremque possimus velit! Repudiandae nisi odit,
-          aperiam odio ducimus, obcaecati libero et quia tempora excepturi quis
-          alias?
+          We provide products with modern designs, diverse in colors and
+          designs. You are completely assured to choose for yourself the most
+          suitable furniture set, fully and harmoniously combining elements of
+          color, style, and size to make your home's space impressive by We
+          always listen and answer all questions and concerns of customers.
         </p>
         <Link to="/products" className="btn hero-btn">
           SHOP NOW
@@ -46,6 +47,7 @@ const Wrapper = styled.section`
     margin-bottom: 2rem;
     color: var(--clr-grey-5);
     font-size: 1rem;
+    text-align: justify;
   }
   @media (min-width: 992px) {
     height: calc(100vh - 5rem);

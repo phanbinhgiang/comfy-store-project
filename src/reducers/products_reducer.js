@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {
   SIDEBAR_OPEN,
   SIDEBAR_CLOSE,
