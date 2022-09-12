@@ -72,6 +72,10 @@ const Wrapper = styled.section`
   }
   @media (min-width: 768px) {
     column-gap: 2rem;
+    position: sticky;
+    top: 1rem;
+    background-color: var(--clr-white);
+    z-index: 10;
   }
   p {
     text-transform: capitalize;
