@@ -6,7 +6,7 @@ import aboutImage from '../assets/hero-bcg.jpeg';
 
 const AboutPage = () => {
   return (
-    <main>
+    <main className="page-padding-80px">
       <PageHero title="about" />
       <Wrapper className="page section section-center">
         <img src={aboutImage} alt="nice desk" />

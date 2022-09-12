@@ -4,7 +4,7 @@ import { PageHero } from '../components';
 
 const CheckoutPage = () => {
   return (
-    <main>
+    <main className="page-padding-80px">
       <PageHero title="Checkout" />
       <Wrapper className="page">
         <h1>checkout here</h1>

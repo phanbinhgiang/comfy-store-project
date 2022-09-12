@@ -3,7 +3,7 @@ import { Hero, Contact, FeaturedProducts, Services } from '../components';
 
 const HomePage = () => {
   return (
-    <main>
+    <main className="page-padding-80px">
       <Hero />
       <FeaturedProducts />
       <Services />

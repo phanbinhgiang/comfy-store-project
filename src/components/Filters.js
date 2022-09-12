@@ -256,7 +256,7 @@ const Wrapper = styled.section`
   @media (min-width: 768px) {
     .content {
       position: sticky;
-      top: 1rem;
+      top: 5rem;
     }
   }
 `;
