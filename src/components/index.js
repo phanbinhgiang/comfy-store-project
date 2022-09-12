@@ -7,6 +7,7 @@ import Hero from './Hero';
 import Contact from './Contact';
 import FeaturedProducts from './FeaturedProducts';
 import Services from './Services';
+import StripeCheckout from './StripeCheckout';
 
 export {
   Navbar,
@@ -18,4 +19,5 @@ export {
   Contact,
   FeaturedProducts,
   Services,
+  StripeCheckout,
 };
