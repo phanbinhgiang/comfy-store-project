@@ -9,14 +9,15 @@ import { ProductsProvider } from './context/products_context';
 import { FilterProvider } from './context/filter_context';
 import { CartProvider } from './context/cart_context';
 import { UserProvider } from './context/user_context';
+import { HistoryOrderProvider } from './context/history_order_context';
 
 // dev-0cl4pra5.us.auth0.com
 // 5VmugDW5k8rQzo9GiuBPdFjqM3obIUS3
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Auth0Provider
-    domain="dev-0cl4pra5.us.auth0.com"
-    clientId="5VmugDW5k8rQzo9GiuBPdFjqM3obIUS3"
+    domain={process.env.REACT_APP_AUTH_DOMAIN}
+    clientId={process.env.REACT_APP_AUTH_CLIENT_ID}
     redirectUri={window.location.origin}
     cacheLocation="localstorage"
   >
@@ -24,7 +25,9 @@ root.render(
       <ProductsProvider>
         <FilterProvider>
           <CartProvider>
-            <App />
+            <HistoryOrderProvider>
+              <App />
+            </HistoryOrderProvider>
           </CartProvider>
         </FilterProvider>
       </ProductsProvider>
