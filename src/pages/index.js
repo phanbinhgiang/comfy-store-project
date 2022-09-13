@@ -7,6 +7,7 @@ import Products from './ProductsPage';
 import SingleProduct from './SingleProductPage';
 import About from './AboutPage';
 import AuthWrapper from './AuthWrapper';
+import HistoryOrder from './HistoryOrderPage';
 
 export {
   Home,
@@ -18,4 +19,5 @@ export {
   Checkout,
   PrivateRoute,
   AuthWrapper,
+  HistoryOrder,
 };

@@ -11,6 +11,7 @@ import {
   Checkout,
   PrivateRoute,
   AuthWrapper,
+  HistoryOrder,
 } from './pages';
 import { Navbar, Sidebar, Footer } from './components';
 
@@ -35,6 +36,8 @@ function App() {
               </PrivateRoute>
             }
           />
+          <Route exact path="/history" element={<HistoryOrder />} />
+
           <Route exact path="*" element={<Error />} />
         </Routes>
         <Footer />

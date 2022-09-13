@@ -5,20 +5,23 @@ import { useCartContext } from '../context/cart_context';
 import { useUserContext } from '../context/user_context';
 import { formatPrice } from '../utils/helpers';
 import { useNavigate, Link } from 'react-router-dom';
+import { useHistoryOrder } from '../context/history_order_context';
 
 const StripeCheckout = () => {
   const { cart, total_amount, shipping_fee, clearCart } = useCartContext();
   const { myUser } = useUserContext();
   const navigate = useNavigate();
-  // STRIPE STUFF
   const [succeeded, setSucceeded] = useState(false);
   const [error, setError] = useState(null);
   const [processing, setProcessing] = useState('');
   const [disabled, setDisabled] = useState(true);
   const [clientSecret, setClientSecret] = useState('');
 
+  const { order, addNewOrder, updateHistoryOrder } = useHistoryOrder();
+
   const handleSubmitPayment = () => {
     setSucceeded(true);
+    updateHistoryOrder(order);
     setTimeout(() => {
       navigate('/');
       clearCart();
@@ -43,7 +46,14 @@ const StripeCheckout = () => {
 
           <form onSubmit={handleSubmitPayment}>
             <p>Card Number:</p>
-            <input type="number" required placeholder="Card Number" />
+            <input
+              type="text"
+              value={order.cardNumber}
+              required
+              placeholder="Card Number"
+              onChange={addNewOrder}
+              data-total={total_amount}
+            />
             <input type="submit" className="submit-btn" value="PAY"></input>
           </form>
         </article>

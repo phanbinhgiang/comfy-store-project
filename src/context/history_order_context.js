@@ -1,6 +1,7 @@
 import React, { useContext, useReducer, useEffect } from 'react';
 
 import {
+  ADD_NEW_ORDER,
   UPDATE_HISTORY_ORDER,
   REMOVE_HISTORY_ORDER,
   CLEAR_HISTORY_ORDER,
@@ -10,29 +11,39 @@ import { useHistory } from 'react-router-dom';
 
 const HistoryOrderContext = React.createContext();
 
+const getLocalStorage = () => {
+  let cart = localStorage.getItem('orders');
+  if (cart) {
+    return JSON.parse(localStorage.getItem('orders'));
+  } else {
+    return [];
+  }
+};
+
 const initialState = {
-  orders: [],
+  orders: getLocalStorage(),
+  order: {},
 };
 
 export const HistoryOrderProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const addNewOrder = (e) => {
+    const cardNumber = e.target.value;
+    const total = e.target.dataset.total;
+    dispatch({ type: ADD_NEW_ORDER, payload: { cardNumber, total } });
+  };
+
+  const updateHistoryOrder = (item) => {
+    dispatch({ type: UPDATE_HISTORY_ORDER, payload: item });
+  };
 
   useEffect(() => {
-    const today = new Date();
-    const time =
-      today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
-    const dateOrder =
-      today.getFullYear() +
-      '-' +
-      (today.getMonth() + 1) +
-      '-' +
-      today.getDate();
-    const dateTimeOrder = dateOrder + ' ' + time;
-    console.log(dateTimeOrder);
-    dispatch({ state: UPDATE_HISTORY_ORDER });
-  }, [state.orders]);
+    localStorage.setItem('orders', JSON.stringify(state.orders));
+  });
   return (
-    <HistoryOrderContext.Provider value="HistoryOrderProvider">
+    <HistoryOrderContext.Provider
+      value={{ ...state, addNewOrder, updateHistoryOrder }}
+    >
       {children}
     </HistoryOrderContext.Provider>
   );
