@@ -38,6 +38,12 @@ const Navbar = () => {
               <Link to="/checkout">checkout</Link>
             </li>
           )}
+
+          {myUser && (
+            <li>
+              <Link to="/history">history</Link>
+            </li>
+          )}
         </ul>
         <CartButtons />
       </div>
