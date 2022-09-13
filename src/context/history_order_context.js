@@ -7,7 +7,6 @@ import {
   CLEAR_HISTORY_ORDER,
 } from '../actions';
 import reducer from '../reducers/history_order_reducer';
-import { useHistory } from 'react-router-dom';
 
 const HistoryOrderContext = React.createContext();
 
@@ -37,12 +36,26 @@ export const HistoryOrderProvider = ({ children }) => {
     dispatch({ type: UPDATE_HISTORY_ORDER, payload: item });
   };
 
+  const removeOrderItem = (item) => {
+    dispatch({ type: REMOVE_HISTORY_ORDER, payload: item });
+  };
+
+  const clearHistoryOrder = () => {
+    dispatch({ type: CLEAR_HISTORY_ORDER });
+  };
+
   useEffect(() => {
     localStorage.setItem('orders', JSON.stringify(state.orders));
   });
   return (
     <HistoryOrderContext.Provider
-      value={{ ...state, addNewOrder, updateHistoryOrder }}
+      value={{
+        ...state,
+        addNewOrder,
+        updateHistoryOrder,
+        removeOrderItem,
+        clearHistoryOrder,
+      }}
     >
       {children}
     </HistoryOrderContext.Provider>

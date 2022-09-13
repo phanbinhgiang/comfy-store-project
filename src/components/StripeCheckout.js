@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import { useCartContext } from '../context/cart_context';
@@ -8,14 +8,10 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useHistoryOrder } from '../context/history_order_context';
 
 const StripeCheckout = () => {
-  const { cart, total_amount, shipping_fee, clearCart } = useCartContext();
+  const { total_amount, shipping_fee, clearCart } = useCartContext();
   const { myUser } = useUserContext();
   const navigate = useNavigate();
   const [succeeded, setSucceeded] = useState(false);
-  const [error, setError] = useState(null);
-  const [processing, setProcessing] = useState('');
-  const [disabled, setDisabled] = useState(true);
-  const [clientSecret, setClientSecret] = useState('');
 
   const { order, addNewOrder, updateHistoryOrder } = useHistoryOrder();
 
@@ -52,7 +48,7 @@ const StripeCheckout = () => {
               required
               placeholder="Card Number"
               onChange={addNewOrder}
-              data-total={total_amount}
+              data-total={total_amount + shipping_fee}
             />
             <input type="submit" className="submit-btn" value="PAY"></input>
           </form>

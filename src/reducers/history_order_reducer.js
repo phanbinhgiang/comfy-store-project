@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {
   ADD_NEW_ORDER,
   UPDATE_HISTORY_ORDER,
@@ -26,6 +24,16 @@ const history_order_reducer = (state, action) => {
     const dateTime = date + ' at ' + time;
     order = { ...order, dateTime };
     return { ...state, orders: [...state.orders, order], order: {} };
+  }
+  if (action.type === REMOVE_HISTORY_ORDER) {
+    const tempOrders = state.orders.filter((order) => {
+      return order.dateTime !== action.payload;
+    });
+    return { ...state, orders: tempOrders };
+  }
+
+  if (action.type === CLEAR_HISTORY_ORDER) {
+    return { ...state, orders: [], order: {} };
   }
 };
 
