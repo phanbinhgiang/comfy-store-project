@@ -5,9 +5,10 @@ import { Link } from 'react-router-dom';
 import { PageHero } from '../components';
 import { useCartContext } from '../context/cart_context';
 import CartContent from '../components/CartContent';
+import CartPopup from '../components/CartPopup';
 
 const CartPage = () => {
-  const { cart } = useCartContext();
+  const { cart, isOpenCartPopup } = useCartContext();
 
   if (cart.length < 1) {
     return (
@@ -27,7 +28,7 @@ const CartPage = () => {
     <main className="page-padding-80px">
       <PageHero title="cart" />
       <Wrapper className="page">
-        <CartContent />
+        {isOpenCartPopup ? <CartPopup /> : <CartContent />}
       </Wrapper>
     </main>
   );
