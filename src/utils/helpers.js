@@ -9,5 +9,28 @@ export const getUniqueValues = (data, type) => {
   if (type === 'colors') {
     unique = unique.flat();
   }
+
+  // const arr = [
+  //   { id: 1, name: 'Tom' },
+  //   { id: 1, name: 'Tom' },
+  //   { id: 2, name: 'Nick' },
+  //   { id: 2, name: 'Nick' },
+  //   { id: 3, name: 'John' },
+  // ];
+
+  // const uniqueIds = [];
+  // const uniqueArr = arr.filter((element) => {
+  //   const isDuplicate = uniqueIds.includes(element.id);
+
+  //   if (!isDuplicate) {
+  //     uniqueIds.push(element.id);
+
+  //     return true;
+  //   }
+
+  //   return false;
+  // });
+  // 👇️ [{id: 1, name: 'Tom'}, {id: 2, name: 'Nick'}]
+
   return ['all', ...new Set(unique)];
 };
