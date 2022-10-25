@@ -6,18 +6,20 @@ import { useCartContext } from '../context/cart_context';
 const CartPopup = () => {
   const { removeItem, cancelRemoveItem, idItemRemove } = useCartContext();
   return (
-    <Wrapper className="section section-center">
-      <h4>Do you want to remove the item from the cart?</h4>
-      <div className="btn-confirm">
-        <button
-          className="btn btn-cart remove"
-          onClick={() => removeItem(idItemRemove)}
-        >
-          Remove Item
-        </button>
-        <button className="btn btn-cart" onClick={cancelRemoveItem}>
-          Cancel
-        </button>
+    <Wrapper className="">
+      <div>
+        <h4>Do you want to remove the item from the cart?</h4>
+        <div className="btn-confirm">
+          <button
+            className="btn btn-cart remove"
+            onClick={() => removeItem(idItemRemove)}
+          >
+            Remove Item
+          </button>
+          <button className="btn btn-cart" onClick={cancelRemoveItem}>
+            Cancel
+          </button>
+        </div>
       </div>
     </Wrapper>
   );
@@ -26,35 +28,30 @@ const CartPopup = () => {
 export default CartPopup;
 
 const Wrapper = styled.div`
-  width: 45vw;
-  padding: 50px 100px;
-  margin-top: 100px;
-  text-align: center;
-  border: 2px solid var(--clr-black);
-  border-radius: var(--radius);
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background: black;
+  z-index: 5;
+  top: 0;
+  opacity: 0.6;
+  align-items: center;
+  justify-content: center;
   h4 {
-    padding-bottom: 50px;
+    color: white;
+    padding-bottom: 1.5rem;
   }
   .btn-confirm {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-  }
-  .btn-cart {
-    min-width: 150px;
-  }
-
-  button.btn.btn-cart.remove {
-    background: var(--clr-red-dark);
-    :hover {
-      opacity: 0.8;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10rem;
+    margin: 0 3rem 0 3rem;
+    .remove {
+      background: #8b0000;
     }
-  }
-  @media screen and (max-width: 1440px) and (min-width: 992px) {
-    width: 60vw;
-  }
-  @media screen and (max-width: 992px) {
-    width: 90vw;
-    padding: 100px 50px;
+    .remove:hover {
+      background: #ff0000;
+    }
   }
 `;
