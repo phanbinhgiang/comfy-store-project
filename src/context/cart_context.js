@@ -8,6 +8,7 @@ import {
   TOGGLE_CART_ITEM_AMOUNT,
   CLEAR_CART,
   COUNT_CART_TOTALS,
+  CANCEL_REMOVE_ITEM,
 } from '../actions';
 
 const CartContext = React.createContext();
@@ -23,6 +24,8 @@ const getLocalStorage = () => {
 
 const initialState = {
   cart: getLocalStorage(),
+  isOpenCartPopup: false,
+  idItemRemove: '',
   total_items: 0,
   total_amount: 0,
   shipping_fee: 534,
@@ -48,13 +51,24 @@ export const CartProvider = ({ children }) => {
     dispatch({ type: CLEAR_CART });
   };
 
+  const cancelRemoveItem = () => {
+    dispatch({ type: CANCEL_REMOVE_ITEM });
+  };
+
   useEffect(() => {
     dispatch({ type: COUNT_CART_TOTALS });
     localStorage.setItem('cart', JSON.stringify(state.cart));
   }, [state.cart]);
   return (
     <CartContext.Provider
-      value={{ ...state, addToCart, removeItem, toggleAmount, clearCart }}
+      value={{
+        ...state,
+        addToCart,
+        removeItem,
+        toggleAmount,
+        clearCart,
+        cancelRemoveItem,
+      }}
     >
       {children}
     </CartContext.Provider>

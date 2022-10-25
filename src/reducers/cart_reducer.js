@@ -4,6 +4,7 @@ import {
   TOGGLE_CART_ITEM_AMOUNT,
   CLEAR_CART,
   COUNT_CART_TOTALS,
+  CANCEL_REMOVE_ITEM,
 } from '../actions';
 const cart_reducer = (state, action) => {
   if (action.type === ADD_TO_CART) {
@@ -37,12 +38,19 @@ const cart_reducer = (state, action) => {
   }
   if (action.type === REMOVE_CART_ITEM) {
     const tempCart = state.cart.filter((item) => item.id !== action.payload);
-    return { ...state, cart: tempCart };
+    return {
+      ...state,
+      cart: tempCart,
+      isOpenCartPopup: false,
+      idItemRemove: '',
+    };
   }
   if (action.type === CLEAR_CART) {
     return { ...state, cart: [] };
   }
   if (action.type === TOGGLE_CART_ITEM_AMOUNT) {
+    let isOpenCartPopup = false;
+    let idItemRemove = '';
     const { id, value } = action.payload;
     const tempCart = state.cart.map((item) => {
       if (item.id === id) {
@@ -56,6 +64,8 @@ const cart_reducer = (state, action) => {
         if (value === 'dec') {
           let newAmount = item.amount - 1;
           if (newAmount < 1) {
+            isOpenCartPopup = true;
+            idItemRemove = id;
             newAmount = 1;
           }
           return { ...item, amount: newAmount };
@@ -63,7 +73,7 @@ const cart_reducer = (state, action) => {
       }
       return item;
     });
-    return { ...state, cart: tempCart };
+    return { ...state, cart: tempCart, isOpenCartPopup, idItemRemove };
   }
   if (action.type === COUNT_CART_TOTALS) {
     const { total_items, total_amount } = state.cart.reduce(
@@ -76,6 +86,9 @@ const cart_reducer = (state, action) => {
       { total_items: 0, total_amount: 0 },
     );
     return { ...state, total_items, total_amount };
+  }
+  if (action.type === CANCEL_REMOVE_ITEM) {
+    return { ...state, isOpenCartPopup: false, idItemRemove: '' };
   }
   throw new Error(`No Matching "${action.type}" - action type `);
 };
