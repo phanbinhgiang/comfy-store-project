@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { PageHero } from '../components';
-import aboutImage from '../assets/hero-bcg.jpeg';
+import aboutImage from '../assets/images/hero-bcg.jpeg';
 
 const AboutPage = () => {
   return (
