@@ -14,6 +14,7 @@ const Wrapper = styled.div`
   h4 {
     color: white;
     padding-bottom: 1.5rem;
+    text-align: center;
   }
   .btn-confirm {
     display: grid;
@@ -25,6 +26,15 @@ const Wrapper = styled.div`
     }
     .remove:hover {
       background: #ff0000;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    h4 {
+      font-size: 1rem;
+    }
+
+    .btn-cart {
+      font-size: 10px;
     }
   }
 `;
