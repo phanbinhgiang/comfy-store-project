@@ -28,13 +28,27 @@ const Wrapper = styled.div`
       background: #ff0000;
     }
   }
-  @media screen and (max-width: 768px) {
+  @media screen and (min-width: 500px) and (max-width: 1000px) {
     h4 {
       font-size: 1rem;
     }
 
     .btn-cart {
       font-size: 10px;
+    }
+  }
+  @media screen and (max-width: 499px) {
+    h4 {
+      font-size: 0.8rem;
+    }
+
+    .btn-confirm {
+      gap: 5rem;
+    }
+
+    .btn-cart {
+      font-size: 8px;
+      width: 7rem;
     }
   }
 `;

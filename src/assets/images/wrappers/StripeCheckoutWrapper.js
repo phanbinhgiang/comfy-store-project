@@ -65,6 +65,10 @@ const Wrapper = styled.section`
     cursor: default;
   }
 
+  .btn-pay:hover {
+    opacity: 0.8;
+  }
+
   @keyframes loading {
     0% {
       -webkit-transform: rotate(0deg);

@@ -15,13 +15,17 @@ const StripeCheckout = () => {
 
   const { order, addNewOrder, updateHistoryOrder } = useHistoryOrder();
 
-  const handleSubmitPayment = () => {
-    setSucceeded(true);
-    updateHistoryOrder(order);
+  const navigateHomePage = () => {
     setTimeout(() => {
       navigate('/');
       clearCart();
-    }, 5000);
+    }, 3000);
+  };
+
+  const handleSubmitPayment = () => {
+    setSucceeded(true);
+    updateHistoryOrder(order);
+    navigateHomePage();
   };
   return (
     <Wrapper>
@@ -31,7 +35,14 @@ const StripeCheckout = () => {
             <h4>Thank you</h4>
             <h4>Your payment was successful!</h4>
           </div>
-          <Link to="/" className="btn" onClick={clearCart}>
+          <Link
+            to="/"
+            className="btn"
+            onClick={() => {
+              clearCart();
+              clearTimeout(handleSubmitPayment);
+            }}
+          >
             Back to Home
           </Link>
         </article>
@@ -50,7 +61,11 @@ const StripeCheckout = () => {
               onChange={addNewOrder}
               data-total={total_amount + shipping_fee}
             />
-            <input type="submit" className="submit-btn" value="PAY"></input>
+            <input
+              type="submit"
+              className="submit-btn btn-pay"
+              value="PAY"
+            ></input>
           </form>
         </article>
       )}
