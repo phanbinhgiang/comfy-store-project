@@ -8,7 +8,7 @@ import { useHistoryOrder } from '../context/history_order_context';
 import Wrapper from '../assets/images/wrappers/StripeCheckoutWrapper';
 
 const StripeCheckout = () => {
-  const { total_amount, shipping_fee, clearCart } = useCartContext();
+  const { total_amount, shipping_fee, clearCart, cart } = useCartContext();
   const { myUser } = useUserContext();
   const navigate = useNavigate();
   const [succeeded, setSucceeded] = useState(false);
@@ -59,7 +59,7 @@ const StripeCheckout = () => {
               value={order.cardNumber}
               required
               placeholder="Card Number"
-              onChange={addNewOrder}
+              onChange={(e) => addNewOrder(e, cart)}
               data-total={total_amount + shipping_fee}
             />
             <input

@@ -26,10 +26,10 @@ const initialState = {
 
 export const HistoryOrderProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const addNewOrder = (e) => {
+  const addNewOrder = (e, cart) => {
     const cardNumber = e.target.value;
     const total = e.target.dataset.total;
-    dispatch({ type: ADD_NEW_ORDER, payload: { cardNumber, total } });
+    dispatch({ type: ADD_NEW_ORDER, payload: { cardNumber, total, cart } });
   };
 
   const updateHistoryOrder = (item) => {
