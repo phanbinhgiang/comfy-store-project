@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 
 import { useCartContext } from '../context/cart_context';
 import { useUserContext } from '../context/user_context';
 import { formatPrice } from '../utils/helpers';
-import { useNavigate, Link } from 'react-router-dom';
 import { useHistoryOrder } from '../context/history_order_context';
 import Wrapper from '../assets/images/wrappers/StripeCheckoutWrapper';
 
@@ -14,12 +14,13 @@ const StripeCheckout = () => {
   const [succeeded, setSucceeded] = useState(false);
 
   const { order, addNewOrder, updateHistoryOrder } = useHistoryOrder();
+  let timerID = useRef();
 
   const navigateHomePage = () => {
-    setTimeout(() => {
+    timerID.current = setTimeout(() => {
       navigate('/');
       clearCart();
-    }, 3000);
+    }, 5000);
   };
 
   const handleSubmitPayment = () => {
@@ -40,7 +41,7 @@ const StripeCheckout = () => {
             className="btn"
             onClick={() => {
               clearCart();
-              clearTimeout(handleSubmitPayment);
+              clearTimeout(timerID.current);
             }}
           >
             Back to Home
